@@ -12,12 +12,12 @@ public class WishList {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "member_id", nullable = false,
-      foreignKey = @ForeignKey(name = "fk_wishlist_member")) // ✅ 이름 명시
+      foreignKey = @ForeignKey(name = "fk_wishlist_member"))
   private Member member;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "product_id", nullable = false,
-      foreignKey = @ForeignKey(name = "fk_wishlist_product")) // ✅ 이름 명시
+      foreignKey = @ForeignKey(name = "fk_wishlist_product"))
   private Product product;
 
   @Column(nullable = false)
