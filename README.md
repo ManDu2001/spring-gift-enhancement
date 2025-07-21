@@ -30,3 +30,5 @@
 -[x] [Exception] 해당 상품의 해당 옵션이 존재하는 않는 경우에 대한 커스텀 예외 OptionNotFoundException 생성
 -[x] [Exception] GlobalExceptionHandler에 위 3개의 커스텀 예외 반영
 -[x] [Test] Option 도메인에 대한 Controller&Service, Repository 테스트 추가 
+
+### 2단계 피드백 반영 사항 (깜빡해서 3단계 구현후 진행)
