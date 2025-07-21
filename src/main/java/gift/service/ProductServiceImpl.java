@@ -22,8 +22,11 @@ public class ProductServiceImpl implements ProductService {
 
   private final ProductRepository productRepository;
 
-  public ProductServiceImpl(ProductRepository productRepository) {
+  private final OptionService optionService;
+
+  public ProductServiceImpl(ProductRepository productRepository, OptionService optionService) {
     this.productRepository = productRepository;
+    this.optionService = optionService;
   }
 
   public ProductResponseDto createProduct(ProductRequestDto productRequestDto) {
@@ -31,6 +34,7 @@ public class ProductServiceImpl implements ProductService {
     Product product = new Product(productRequestDto.name(), productRequestDto.price(),
         productRequestDto.imageUrl());
     Product saved = productRepository.save(product);
+    optionService.addDefaultOption(saved.getId(), saved.getName());
     return new ProductResponseDto(saved);
   }
 
@@ -39,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
     Product product = new Product(productAdminRequestDto.name(), productAdminRequestDto.price(),
         productAdminRequestDto.imageUrl());
     Product saved = productRepository.save(product);
+    optionService.addDefaultOption(saved.getId(), saved.getName());
     return new ProductResponseDto(saved);
 
   }
