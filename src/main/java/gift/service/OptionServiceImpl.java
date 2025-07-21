@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class OptionServiceImpl implements OptionService {
 
   private static final String DEFAULT_OPTION_SUFFIX = " 단품";
@@ -48,6 +47,7 @@ public class OptionServiceImpl implements OptionService {
   }
 
   @Override
+  @Transactional
   public OptionInfoResponseDto addOptionToProduct(Long productId, OptionRequestDto dto) {
     Product product = productRepository.findById(productId)
         .orElseThrow(() -> new ProductNotFoundException(productId));
